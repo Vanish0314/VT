@@ -7,6 +7,7 @@ add_rules("mode.debug", "mode.release")
 -- Requirements
 add_requires("glfw3")
 add_requires("glm")
+add_requires("vulkan")
 add_requires("vulkan-headers")
 add_requires("vulkan-loader")
 
@@ -15,6 +16,7 @@ target("HelloVkTriangle")
     add_files("src/*.cpp")
     add_packages("glfw3")
     add_packages("glm")
+    add_packages("vulkan")
     add_packages("vulkan-headers")
     add_packages("vulkan-loader")
 --
