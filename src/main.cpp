@@ -1,15 +1,10 @@
-/*
- * @Author: Vanish
- * @Date: 2024-12-19 17:01:06
- * @LastEditTime: 2025-01-11 22:35:34
- * Also View: http://vanishing.cc
- * Contract Me: http://qunchengxiao.me
- * Copyright@ http://www.wtfpl.net/
- */
+#include <iostream>
 #include <exception>
+#include <memory>
+
 #define GLFW_INCLUDE_VULKAN
 
-#include <iostream>
+#include <vulkan/vulkan.h>
 #include <GLFW/glfw3.h>
 #include <glm/glm.hpp>
 
@@ -25,16 +20,39 @@ public:
 private:
     void Init()
     {
-
+        InitWindow();
+        InitVulkan();
     }
     void RenderLoop()
     {
-
+        while(!glfwWindowShouldClose(m_window))
+        {
+            glfwPollEvents();
+        }
     }
     void Close()
     {
+        glfwDestroyWindow(m_window);
+        glfwTerminate();
+    }
+private:
+    void InitWindow()
+    {
+        glfwInit();
+
+        glfwWindowHint(GLFW_CLIENT_API,GLFW_NO_API); // 显式阻止创建opengl上下文
+        
+        m_window = glfwCreateWindow(m_width, m_height, m_title, nullptr, nullptr);
+    }
+    void InitVulkan()
+    {
 
     }
+private:
+    unsigned short m_width{1920};
+    unsigned short m_height{1080};
+    const char *m_title{"VulkanTriangle"};
+    GLFWwindow* m_window; // 裸指针注意
 };
 
 
