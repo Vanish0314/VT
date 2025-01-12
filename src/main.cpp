@@ -50,7 +50,19 @@ private:
     void InitVulkan()
     {   
         CreateInstance();
+        SetValidationLayer();
+        CreateWindowSurface();
+        SetPhysicalDevice();
+        CreateLogicalDevice();
+        CreateSwapChain();
+        CreateImageViews();
+        CreateRenderPass();
+        CreateGraphicsPipeline();
+        CreateFrameBuffers();
+        CreateCommandPool();
+        CreateCommanBuffers();
     }
+private:
     void CreateInstance()
     {
         SetVkAppInfo();
@@ -87,7 +99,11 @@ private:
             throw std::runtime_error("[HelloTriangleApplication.class]failed to create instance!");
         }
     }
-private:
+private: // Validation Layer
+    void SetValidationLayer() //TODO
+    {
+
+    }
     bool CheckValidationLayerSupport()
     {
         uint32_t layerCount;
@@ -96,6 +112,56 @@ private:
         vkEnumerateInstanceLayerProperties(&layerCount, availableLayers.data());// 存入校验层
 
         return false;
+    }
+private:
+    void CreateWindowSurface() //TODO
+    {
+
+    }
+private:
+    void SetPhysicalDevice() //TODO
+    {
+
+    }
+private:
+    void CreateLogicalDevice() //TODO
+    {
+
+    }
+private:
+    void CreateSwapChain() //TODO
+    {
+
+    }
+private:
+    void CreateImageViews() //TODO
+    {
+
+    }
+private:
+    void CreateRenderPass() //TODO
+    {
+
+    }
+private:
+    void CreateGraphicsPipeline() //TODO
+    {
+
+    }
+private:
+    void CreateFrameBuffers() //TODO
+    {
+
+    }
+private:
+    void CreateCommanBuffers() //TODO
+    {
+
+    }
+private:
+    void CreateCommandPool() //TODO
+    {
+
     }
 private:
 #ifdef ENABLE_VULKAN_VALIDATION_LAYER
