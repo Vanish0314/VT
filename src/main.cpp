@@ -1,7 +1,9 @@
 #include "vulkan/vulkan_core.h"
+#include <cstdint>
 #include <iostream>
 #include <exception>
 #include <memory>
+#include <vector>
 
 #define GLFW_INCLUDE_VULKAN
 
@@ -85,6 +87,22 @@ private:
             throw std::runtime_error("[HelloTriangleApplication.class]failed to create instance!");
         }
     }
+private:
+    bool CheckValidationLayerSupport()
+    {
+        uint32_t layerCount;
+        vkEnumerateInstanceLayerProperties(&layerCount, nullptr);//获取可用校验层数量
+        std::vector<VkLayerProperties> availableLayers(layerCount);
+        vkEnumerateInstanceLayerProperties(&layerCount, availableLayers.data());// 存入校验层
+
+        return false;
+    }
+private:
+#ifdef ENABLE_VULKAN_VALIDATION_LAYER
+    const bool m_EnableVulkanValidatioinLayer = true;
+#else
+    const bool m_EnableVulkanValidatioinLayer = false;
+#endif
 private: //Window
     unsigned short m_width{1920};
     unsigned short m_height{1080};
